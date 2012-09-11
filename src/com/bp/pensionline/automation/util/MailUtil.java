@@ -58,11 +58,20 @@ public class MailUtil {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress("long.nguyen@c-mg.com"));
             message.setRecipients(Message.RecipientType.TO,
-                InternetAddress.parse("my.vu@c-mg.com"));
+                InternetAddress.parse("huong.vu@c-mg.com"));
             message.setSubject("Pensionline Daily Test - "+ dateFormat.format(date));
             message.setContent(body, "text/html");
 
             Transport.send(message);
+            
+            MimeMessage message1 = new MimeMessage(session);
+            message1.setFrom(new InternetAddress("long.nguyen@c-mg.com"));
+            message1.setRecipients(Message.RecipientType.TO,
+                InternetAddress.parse("my.vu@c-mg.com"));
+            message1.setSubject("Pensionline Daily Test - "+ dateFormat.format(date));
+            message1.setContent(body, "text/html");
+            
+            Transport.send(message1);
         }
 
         //status = 2 mean Test Failed
@@ -70,11 +79,20 @@ public class MailUtil {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress("long.nguyen@c-mg.com"));
             message.setRecipients(Message.RecipientType.TO,
-                InternetAddress.parse("my.vu@c-mg.com"));
+                InternetAddress.parse("huong.vu@c-mg.com"));
             message.setSubject("Failed Pensionline Daily Test - "+ dateFormat.format(date));
             message.setContent(body, "text/html");
 
             Transport.send(message);
+            
+            MimeMessage message1 = new MimeMessage(session);
+            message1.setFrom(new InternetAddress("long.nguyen@c-mg.com"));
+            message1.setRecipients(Message.RecipientType.TO,
+                InternetAddress.parse("my.vu@c-mg.com"));
+            message1.setSubject("Failed Pensionline Daily Test - "+ dateFormat.format(date));
+            message1.setContent(body, "text/html");
+            
+            Transport.send(message1);
         }
     }
 }

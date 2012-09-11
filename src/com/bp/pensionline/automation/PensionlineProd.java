@@ -490,9 +490,9 @@ public class PensionlineProd {
    		 FileLogger.logger.info(" ->Retirement planner functional (yes/no): NO ");
    	    }
             /************Loading My Redundancy Planner********************************/
-            selenium.open("https://pensionline.bp.com/content/pl/mydetails/retirement_planner_ac/");
+            selenium.open("https://pensionline.bp.com/content/pl/mydetails/redundancy_planner_ac/");
             Thread.sleep(10000);
-            if(selenium.isTextPresent("£26,588")){
+            if(selenium.isTextPresent("12 months")){
        	 	bodyText += "     Redundancy planner functional (yes/no): YES " + "<br>";
        	 	FileLogger.logger.info(" ->Redundancy planner functional (yes/no): YES ");
    	    }else{
