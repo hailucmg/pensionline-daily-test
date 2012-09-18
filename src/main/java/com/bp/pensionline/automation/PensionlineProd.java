@@ -28,7 +28,7 @@ import com.thoughtworks.selenium.Selenium;
  */
 public class PensionlineProd {
     public void PensionlineTest() throws MessagingException, InterruptedException{
-        MailUtil mail = new MailUtil();
+	MailUtil mail = new MailUtil();
         String bodyText = "";
         String[] bgroup;
         Element element = new Element();
@@ -41,15 +41,15 @@ public class PensionlineProd {
         selenium.setTimeout("2100000");
         /***************Start website****************/
         selenium.open(element.getUrl_prod());
-        Thread.sleep(5000);
+        Thread.sleep(10000);
         if(selenium.isTextPresent("welcome to PensionLine")){
             bodyText = "<h3>Beginning of automation test for PL Prod: https://pensionline.bp.com/content/pl</h3>"+"<br>";
             FileLogger.logger.info("Beginning of autamation test for PL Prod");
         }else{
             bodyText = "<h3 style=\"color:red\">Server was broken. Cannot open website</h3>";
             FileLogger.logger.info("Server was broken. Cannot open website");
-            try {
-		mail.sendMailPL(bodyText, 2);
+            try {	
+		    mail.sendMailPL(bodyText, 2);
 	    } catch (MessagingException e) {
 		e.printStackTrace();
 	    }
@@ -57,7 +57,7 @@ public class PensionlineProd {
         
         /*****************Start login function*********************/
         selenium.open("https://pensionline.bp.com/content/pl/_login_ask.html");
-        Thread.sleep(5000);
+        Thread.sleep(10000);
         selenium.type("_request_username", "superuser");
         selenium.type("_request_password", "P3nsions");
         selenium.click("doauth");
@@ -73,7 +73,7 @@ public class PensionlineProd {
                 mail.sendMailPL(bodyText, 2);
             } catch (MessagingException e) {
                 e.printStackTrace();
-            } 
+            }
         }
         
         /*******************Loading of WALL'ed member (BGROUP/REFNO): BPF-0103249*********************************/
@@ -83,7 +83,7 @@ public class PensionlineProd {
         }
         selenium.type("crefno", bgroup[1]);
         selenium.click("doauth");
-        Thread.sleep(5000);
+        Thread.sleep(10000);
         if (selenium.isTextPresent("welcome to PensionLine")) {
             bodyText += "   Loading of WALL'ed member (BGROUP/REFNO) "+element.getWall_member1()+": PASSED" + "<br>";
             FileLogger.logger.info(" ->Loading of WALL'ed member (BGROUP/REFNO) "+element.getWall_member1()+": PASSED");
@@ -94,14 +94,14 @@ public class PensionlineProd {
         
         /********************Loading of WALL'ed member (BGROUP/REFNO): BPF-0103603********************************/
         selenium.open("https://pensionline.bp.com/content/pl/superuser/");
-        Thread.sleep(5000);
+        Thread.sleep(10000);
         bgroup = element.getWall_member2().split("-");
         if(bgroup[0].equalsIgnoreCase("BPF")){
             selenium.select("bgroup","BPF");
         }
         selenium.type("crefno", bgroup[1]);
         selenium.click("doauth");
-        Thread.sleep(5000);
+        Thread.sleep(10000);
         if (selenium.isTextPresent("welcome to PensionLine")) {
             bodyText += "   Loading of WALL'ed member (BGROUP/REFNO) "+element.getWall_member2()+": PASSED" + "<br>";
             FileLogger.logger.info(" ->Loading of WALL'ed member (BGROUP/REFNO) "+element.getWall_member2()+": PASSED");
@@ -112,14 +112,14 @@ public class PensionlineProd {
         
         /********************Loading of WALL'ed member (BGROUP/REFNO): BPF-0116405********************************/
         selenium.open("https://pensionline.bp.com/content/pl/superuser/");
-        Thread.sleep(5000);
+        Thread.sleep(10000);
         bgroup = element.getWall_member3().split("-");
         if(bgroup[0].equalsIgnoreCase("BPF")){
             selenium.select("bgroup","BPF");
         }
         selenium.type("crefno", bgroup[1]);
         selenium.click("doauth");
-        Thread.sleep(5000);
+        Thread.sleep(10000);
         if (selenium.isTextPresent("welcome to PensionLine")) {
             bodyText += "   Loading of WALL'ed member (BGROUP/REFNO) "+element.getWall_member3()+": PASSED" + "<br><br>";
             FileLogger.logger.info(" ->Loading of WALL'ed member (BGROUP/REFNO) "+element.getWall_member3()+": PASSED");
@@ -130,14 +130,14 @@ public class PensionlineProd {
         
         /********************Loading of Deferred member (BGROUP/REFNO): BPF-0103360(PP)********************************/
         selenium.open("https://pensionline.bp.com/content/pl/superuser/");
-        Thread.sleep(5000);
+        Thread.sleep(10000);
         bgroup = element.getDeferred_member().split("-");
         if(bgroup[0].equalsIgnoreCase("BPF")){
             selenium.select("bgroup","BPF");
         }
         selenium.type("crefno", bgroup[1]);
         selenium.click("doauth");
-        Thread.sleep(5000);
+        Thread.sleep(10000);
         if (selenium.isTextPresent("welcome to PensionLine")) {
             bodyText += "   Loading of Deferred member (BGROUP/REFNO) "+element.getDeferred_member()+ "<br>";
             bodyText += "     lock-outs functional(yes/no) : YES" + "<br>";
@@ -149,11 +149,11 @@ public class PensionlineProd {
         
         	/**************Loading My detail and This is me*********************/
         	selenium.open("https://pensionline.bp.com/content/pl/mydetails/");
-        	Thread.sleep(3000);
+        	Thread.sleep(9000);
         	if(selenium.isTextPresent("my details")){
         	    bodyText += "     My details function" + "<br>";
         	    selenium.open("https://pensionline.bp.com/content/pl/mydetails/this_is_me.html");
-        	    Thread.sleep(7000);
+        	    Thread.sleep(21000);
         	    if(selenium.isTextPresent("Mr Stephen Day")){
         		bodyText += "       This is me functional(yes/no) : YES" + "<br><br>";
         	        FileLogger.logger.info(" ->This is me functional(yes/no) : YES");
@@ -168,14 +168,14 @@ public class PensionlineProd {
        
         /********************Loading of Pensioner member (BGROUP/REFNO): BCF-0001532********************************/
         selenium.open("https://pensionline.bp.com/content/pl/superuser/");
-        Thread.sleep(5000);
+        Thread.sleep(10000);
         bgroup = element.getPensioner_member1().split("-");
         if(bgroup[0].equalsIgnoreCase("BCF")){
              selenium.select("bgroup","BCF");
         }
         selenium.type("crefno", bgroup[1]);
         selenium.click("doauth");
-        Thread.sleep(5000);
+        Thread.sleep(10000);
         if (selenium.isTextPresent("welcome to PensionLine")) {
             bodyText += "   Loading of Pensioner member (BGROUP/REFNO) "+element.getPensioner_member1()+"<br>";
             bodyText += "     lock-outs functional(yes/no) : YES" + "<br>";
@@ -186,11 +186,11 @@ public class PensionlineProd {
         }
             	/**************Loading My detail and This is me*********************/
         	selenium.open("https://pensionline.bp.com/content/pl/mydetails/");
-        	Thread.sleep(5000);
+        	Thread.sleep(10000);
         	if(selenium.isTextPresent("my details")){
         	    bodyText += "     My details function" + "<br>";
         	    selenium.open("https://pensionline.bp.com/content/pl/mydetails/this_is_me.html");
-        	    Thread.sleep(10000);
+        	    Thread.sleep(20000);
         	    if(selenium.isTextPresent("Mr Martin Cookson")){
         		bodyText += "       This is me functional(yes/no) : YES" + "<br>";
         	        FileLogger.logger.info(" ->This is me functional(yes/no) : YES");
@@ -204,8 +204,8 @@ public class PensionlineProd {
         	}
         	/**************Loading My benefits*********************/
         	selenium.open("https://pensionline.bp.com/content/pl/mydetails/benefit_statement_pn.html");
-        	Thread.sleep(50000);
-        	if(selenium.isTextPresent("\u00A37,136.15")){
+        	Thread.sleep(100000);
+        	if(selenium.isTextPresent("£7,136.15")){
         	    bodyText += "       Payslips fuctional (yes/no) : YES" + "<br>";
         	    FileLogger.logger.info(" ->Payslips fuctional (yes/no) : YES");
         	}else{
@@ -214,14 +214,14 @@ public class PensionlineProd {
         	}
         /********************Loading of Pensioner member (BGROUP/REFNO): BPF-0100027********************************/
         selenium.open("https://pensionline.bp.com/content/pl/superuser/");
-        Thread.sleep(5000);
+        Thread.sleep(10000);
         bgroup = element.getPensioner_member2().split("-");
         if(bgroup[0].equalsIgnoreCase("BPF")){
              selenium.select("bgroup","BPF");
         }
         selenium.type("crefno", bgroup[1]);
         selenium.click("doauth");
-        Thread.sleep(5000);
+        Thread.sleep(10000);
         if (selenium.isTextPresent("welcome to PensionLine")) {
               bodyText += "   Loading of Pensioner member (BGROUP/REFNO) "+element.getPensioner_member2()+"<br>";
               bodyText += "     lock-outs functional(yes/no) : YES" + "<br>";
@@ -232,11 +232,11 @@ public class PensionlineProd {
         }
               /**************Loading My detail and This is me*********************/
               selenium.open("https://pensionline.bp.com/content/pl/mydetails/");
-              Thread.sleep(5000);
+              Thread.sleep(10000);
               if(selenium.isTextPresent("my details")){
         	  bodyText += "     My details function" + "<br>";
         	  selenium.open("https://pensionline.bp.com/content/pl/mydetails/this_is_me.html");
-        	  Thread.sleep(10000);
+        	  Thread.sleep(20000);
         	  if(selenium.isTextPresent("Mr Graham Geoffrey Oliver")){
         	      bodyText += "       This is me functional(yes/no) : YES" + "<br>";
         	      FileLogger.logger.info(" ->This is me functional(yes/no) : YES");
@@ -250,8 +250,8 @@ public class PensionlineProd {
                }
                /**************Loading My benefits*********************/
                selenium.open("https://pensionline.bp.com/content/pl/mydetails/benefit_statement_pn.html");
-               Thread.sleep(50000);
-               if(selenium.isTextPresent("\u00A32,746.96")){
+               Thread.sleep(100000);
+               if(selenium.isTextPresent("£2,746.96")){
         	   bodyText += "       Payslips fuctional (yes/no) : YES" + "<br>";
         	   FileLogger.logger.info(" ->Payslips fuctional (yes/no) : YES");
                }else{
@@ -261,14 +261,14 @@ public class PensionlineProd {
                
          /************************Loading of Pensioner member (BGROUP/REFNO): BPF-0090597*************************/
          selenium.open("https://pensionline.bp.com/content/pl/superuser/");
-         Thread.sleep(5000);
+         Thread.sleep(10000);
          bgroup = element.getPensioner_member3().split("-");
          if(bgroup[0].equalsIgnoreCase("BPF")){
               selenium.select("bgroup","BPF");
          }
          selenium.type("crefno", bgroup[1]);
          selenium.click("doauth");
-         Thread.sleep(5000);
+         Thread.sleep(10000);
          if (selenium.isTextPresent("welcome to PensionLine")) {
                bodyText += "   Loading of Pensioner member (BGROUP/REFNO) "+element.getPensioner_member3()+"<br>";
                bodyText += "     lock-outs functional(yes/no) : YES" + "<br>";
@@ -279,11 +279,11 @@ public class PensionlineProd {
          }
                /**************Loading My detail and This is me*********************/
                selenium.open("https://pensionline.bp.com/content/pl/mydetails/");
-               Thread.sleep(5000);
+               Thread.sleep(10000);
                if(selenium.isTextPresent("my details")){
          	  bodyText += "     My details function" + "<br>";
          	  selenium.open("https://pensionline.bp.com/content/pl/mydetails/this_is_me.html");
-         	  Thread.sleep(10000);
+         	  Thread.sleep(20000);
          	  if(selenium.isTextPresent("Mrs E M Spratt")){
          	      bodyText += "       This is me functional(yes/no) : YES" + "<br>";
          	      FileLogger.logger.info(" ->This is me functional(yes/no) : YES");
@@ -297,8 +297,8 @@ public class PensionlineProd {
                 }
                 /**************Loading My benefits*********************/
                 selenium.open("https://pensionline.bp.com/content/pl/mydetails/benefit_statement_pn.html");
-                Thread.sleep(50000);
-                if(selenium.isTextPresent("\u00A32,000.88")){
+                Thread.sleep(100000);
+                if(selenium.isTextPresent("£2,000.88")){
          	   bodyText += "       Payslips fuctional (yes/no) : YES" + "<br><br>";
          	   FileLogger.logger.info(" ->Payslips fuctional (yes/no) : YES");
                 }else{
@@ -308,14 +308,14 @@ public class PensionlineProd {
          
          /******************Loading Security lock-out in place (BGROUP/REFNO): BPF-0001341*****************************/
          selenium.open("https://pensionline.bp.com/content/pl/superuser/");
-         Thread.sleep(5000);
+         Thread.sleep(10000);
          bgroup = element.getSecurity_member1().split("-");
          if(bgroup[0].equalsIgnoreCase("BPF")){
               selenium.select("bgroup","BPF");
          }
          selenium.type("crefno", bgroup[1]);
          selenium.click("doauth");
-         Thread.sleep(5000);
+         Thread.sleep(10000);
          if (selenium.isTextPresent("welcome to PensionLine")) {
                bodyText += "   Loading of Security lock-out in place (BGROUP/REFNO) "+element.getSecurity_member1()+"<br>";
                bodyText += "     lock-outs functional(yes/no) : YES" + "<br>";
@@ -326,11 +326,11 @@ public class PensionlineProd {
          }
              /**************Loading My detail and This is me*********************/
              selenium.open("https://pensionline.bp.com/content/pl/mydetails/");
-             Thread.sleep(5000);
+             Thread.sleep(10000);
              if(selenium.isTextPresent("my details")){
        	  	bodyText += "     My details function" + "<br>";
        	  	selenium.open("https://pensionline.bp.com/content/pl/mydetails/this_is_me.html");
-       	  	Thread.sleep(10000);
+       	  	Thread.sleep(20000);
        	  	if(selenium.isTextPresent("Mr Mark A Ashwell")){
        	  	    bodyText += "       This is me functional(yes/no) : YES" + "<br>";
        	  	    FileLogger.logger.info(" ->This is me functional(yes/no) : YES");
@@ -344,8 +344,8 @@ public class PensionlineProd {
               }
              /************Loading Scheme Benefits Statement*********************/
              selenium.open("https://pensionline.bp.com/content/pl/mydetails/benefit_statement_ac/scheme_pension/");
-             Thread.sleep(20000);
-             if(selenium.isTextPresent("\u00A310,500")){
+             Thread.sleep(30000);
+             if(selenium.isTextPresent("£10,500")){
         	 bodyText += "     Scheme benefit statement functional (yes/no): YES " + "<br>";
         	 FileLogger.logger.info(" ->Scheme benefit statement functional (yes/no): YES ");
     	     }else{
@@ -354,8 +354,8 @@ public class PensionlineProd {
     	     }
              /***********Loading My Annual Allowance***************************/
              selenium.open("https://pensionline.bp.com/content/pl/mydetails/annual_allowance/statement.html");
-             Thread.sleep(10000);
-             if(selenium.isTextPresent("\u00A311,736")){
+             Thread.sleep(30000);
+             if(selenium.isTextPresent("£11,736")){
         	 bodyText += "     My Annual Allowance (yes/no): YES " + "<br><br>";
         	 FileLogger.logger.info(" ->My Annual Allowance (yes/no): YES ");
              }else{
@@ -365,14 +365,14 @@ public class PensionlineProd {
         
         /****************Loading Security lock-out in place (BGROUP/REFNO): BPF-0001794**************************/
         selenium.open("https://pensionline.bp.com/content/pl/superuser/");
-        Thread.sleep(5000);
+        Thread.sleep(10000);
         bgroup = element.getSecurity_member2().split("-");
         if(bgroup[0].equalsIgnoreCase("BPF")){
              selenium.select("bgroup","BPF");
         }
         selenium.type("crefno", bgroup[1]);
         selenium.click("doauth");
-        Thread.sleep(5000);
+        Thread.sleep(10000);
         if (selenium.isTextPresent("welcome to PensionLine")) {
               bodyText += "   Loading of Security lock-out in place (BGROUP/REFNO) "+element.getSecurity_member2()+"<br>";
               bodyText += "     lock-outs functional(yes/no) : YES" + "<br>";
@@ -383,11 +383,11 @@ public class PensionlineProd {
         }
             /**************Loading My detail and This is me*********************/
             selenium.open("https://pensionline.bp.com/content/pl/mydetails/");
-            Thread.sleep(5000);
+            Thread.sleep(10000);
             if(selenium.isTextPresent("my details")){
       	  	bodyText += "     My details function" + "<br>";
       	  	selenium.open("https://pensionline.bp.com/content/pl/mydetails/this_is_me.html");
-      	  	Thread.sleep(10000);
+      	  	Thread.sleep(20000);
       	  	if(selenium.isTextPresent("Mr Ashok K S Bavishi")){
       	  	    bodyText += "       This is me functional(yes/no) : YES" + "<br>";
       	  	    FileLogger.logger.info(" ->This is me functional(yes/no) : YES");
@@ -401,8 +401,8 @@ public class PensionlineProd {
              }
             /************Loading Scheme Benefits Statement*********************/
             selenium.open("https://pensionline.bp.com/content/pl/mydetails/benefit_statement_ac/scheme_pension/");
-            Thread.sleep(20000);
-            if(selenium.isTextPresent("\u00A338,936")){
+            Thread.sleep(40000);
+            if(selenium.isTextPresent("£38,936")){
        	 	bodyText += "     Scheme benefit statement functional (yes/no): YES " + "<br>";
        	 	FileLogger.logger.info(" ->Scheme benefit statement functional (yes/no): YES ");
    	     }else{
@@ -411,8 +411,8 @@ public class PensionlineProd {
    	     }
             /***********Loading My Annual Allowance***************************/
             selenium.open("https://pensionline.bp.com/content/pl/mydetails/annual_allowance/statement.html");
-            Thread.sleep(12000);
-            if(selenium.isTextPresent("\u00A335,253")){
+            Thread.sleep(24000);
+            if(selenium.isTextPresent("£35,253")){
        	 	bodyText += "     My Annual Allowance (yes/no): YES " + "<br><br>";
        	 	FileLogger.logger.info(" ->My Annual Allowance (yes/no): YES ");
             }else{
@@ -422,14 +422,14 @@ public class PensionlineProd {
         
         /****************Loading active member: BPF-0122398*************************************/
         selenium.open("https://pensionline.bp.com/content/pl/superuser/");
-        Thread.sleep(5000);
+        Thread.sleep(10000);
         bgroup = element.getActive_member().split("-");
         if(bgroup[0].equalsIgnoreCase("BPF")){
              selenium.select("bgroup","BPF");
         }
         selenium.type("crefno", bgroup[1]);
         selenium.click("doauth");
-        Thread.sleep(5000);
+        Thread.sleep(10000);
         if (selenium.isTextPresent("welcome to PensionLine")) {
             bodyText += "   Loading of active member: "+element.getActive_member()+"<br>";
             FileLogger.logger.info(" ->loading of active member: "+element.getActive_member()+": PASSED");
@@ -439,11 +439,11 @@ public class PensionlineProd {
         }
             /**************Loading My detail and This is me*********************/
             selenium.open("https://pensionline.bp.com/content/pl/mydetails/");
-            Thread.sleep(5000);
+            Thread.sleep(10000);
             if(selenium.isTextPresent("my details")){
       	  	bodyText += "     My details function" + "<br>";
       	  	selenium.open("https://pensionline.bp.com/content/pl/mydetails/this_is_me.html");
-      	  	Thread.sleep(10000);
+      	  	Thread.sleep(30000);
       	  	if(selenium.isTextPresent("Mr Hugo Galanes-Alvarez")){
       	  	    bodyText += "       This is me functional(yes/no) : YES" + "<br>";
       	  	    FileLogger.logger.info(" ->This is me functional(yes/no) : YES");
@@ -457,8 +457,8 @@ public class PensionlineProd {
              }
             /*************Loading Scheme Benefits Statement********************/
             selenium.open("https://pensionline.bp.com/content/pl/mydetails/benefit_statement_ac/scheme_pension/");
-            Thread.sleep(10000);
-            if(selenium.isTextPresent("\u00A342,233")){
+            Thread.sleep(30000);
+            if(selenium.isTextPresent("£42,233")){
        	 	bodyText += "     Scheme benefit statement functional (yes/no): YES " + "<br>";
        	 	FileLogger.logger.info(" ->Scheme benefit statement functional (yes/no): YES ");
    	    }else{
@@ -467,8 +467,8 @@ public class PensionlineProd {
    	    }
             /************Loading State Benefits********************************/
             selenium.open("https://pensionline.bp.com/content/pl/mydetails/benefit_statement_ac/state_pension.html");
-            Thread.sleep(10000);
-            if(selenium.isTextPresent("\u00A35,950 a year")){
+            Thread.sleep(30000);
+            if(selenium.isTextPresent("£5,950 a year")){
        	 	bodyText += "     State Benefits functional (yes/no): YES " + "<br>";
        	 	FileLogger.logger.info(" ->State Benefits functional (yes/no): YES ");
    	    }else{
@@ -477,8 +477,8 @@ public class PensionlineProd {
    	    }
             /************Loading My Retirement Planner********************************/
             selenium.open("https://pensionline.bp.com/content/pl/mydetails/retirement_planner_ac/");
-            Thread.sleep(10000);
-            if(selenium.isTextPresent("\u00A363,350")){
+            Thread.sleep(30000);
+            if(selenium.isTextPresent("£63,350")){
        	 	bodyText += "     Retirement planner functional (yes/no): YES " + "<br>";
        	 	FileLogger.logger.info(" ->Retirement planner functional (yes/no): YES ");
    	    }else{
@@ -487,7 +487,7 @@ public class PensionlineProd {
    	    }
             /************Loading My Redundancy Planner********************************/
             selenium.open("https://pensionline.bp.com/content/pl/mydetails/redundancy_planner_ac/");
-            Thread.sleep(10000);
+            Thread.sleep(30000);
             if(selenium.isTextPresent("12 months")){
        	 	bodyText += "     Redundancy planner functional (yes/no): YES " + "<br>";
        	 	FileLogger.logger.info(" ->Redundancy planner functional (yes/no): YES ");
@@ -497,7 +497,7 @@ public class PensionlineProd {
    	    }
             /************Loading My Annual Allowance********************************/
             selenium.open("https://pensionline.bp.com/content/pl/mydetails/annual_allowance/");
-            Thread.sleep(5000);
+            Thread.sleep(30000);
             if(selenium.isTextPresent("My AA Projection")){
        	 	bodyText += "     Annual Allowance functional (yes/no): YES " + "<br>";
        	 	FileLogger.logger.info(" ->Annual Allowance functional (yes/no): YES ");
@@ -507,10 +507,33 @@ public class PensionlineProd {
    	    }
             /************Loading My Accrual Rate********************************/
             selenium.open("https://pensionline.bp.com/content/pl/mydetails/myservice/");
-            Thread.sleep(50000);
+            Thread.sleep(100000);
             if(selenium.isTextPresent("Click to add a salary change")){
        	 	bodyText += "     My Accrual Rate functional (yes/no): YES " + "<br>";
        	 	FileLogger.logger.info(" ->My Accrual Rate functional (yes/no): YES ");
+       	 	
+       	 	selenium.click("coins");
+       	 	Thread.sleep(5000);
+       	 	if(!selenium.isTextPresent("Estimated BP cash lump sum: £0")){
+       	 	    bodyText += "      Change cash lump sum to 50%(yes/no): YES  " + "<br>";
+       	 	    FileLogger.logger.info(" -> Change cash lump sum to 50%(yes/no): YES ");
+       	 	}else{
+       	 	    bodyText += "      Change cash lump sum to 50%(yes/no): NO  " + "<br>";
+   	 	    FileLogger.logger.info(" -> Change cash lump sum to 50%(yes/no): NO ");
+       	 	}
+       	 	
+       	 	selenium.click("accrual_plus_img");
+       	 	Thread.sleep(5000);
+       	 	selenium.select("accrual_select","40th");
+       	 	//selenium.click("//button[contains(text(),'Model')]");
+       	 	
+       	 	if(!selenium.isTextPresent("Retiring on your 65th birthday, estimated BP Pension: £0 a year")){
+	 	    bodyText += "      Amounts in the pension & cash lump sum flags change accordingly after each modeling(yes/no): YES   " + "<br>";
+	 	    FileLogger.logger.info(" -> Amounts in the pension & cash lump sum flags change accordingly after each modeling(yes/no): YES  ");
+	 	}else{
+	 	    bodyText += "      Amounts in the pension & cash lump sum flags change accordingly after each modeling(yes/no): NO   " + "<br>";
+	 	    FileLogger.logger.info(" -> Amounts in the pension & cash lump sum flags change accordingly after each modeling(yes/no): NO  ");
+	 	}
    	    }else{
    		 bodyText += "     My Accrual Rate functional (yes/no): NO " + "<br>";
    		 FileLogger.logger.info(" ->My Accrual Rate functional (yes/no): NO ");
@@ -536,7 +559,7 @@ public class PensionlineProd {
                 mail.sendMailPL(bodyText, 1);
             } catch (MessagingException e) {
                 e.printStackTrace();
-            } 
+            }
 	}else{
 	    bodyText += "   LDAP (bp1.ad.bp.com 389) connected(yes/no) : NO" + "<br>";
 	    FileLogger.logger.info(" ->LDAP (bp1.ad.bp.com 389) connected(yes/no) : NO ");
@@ -544,8 +567,9 @@ public class PensionlineProd {
                 mail.sendMailPL(bodyText, 1);
             } catch (MessagingException e) {
                 e.printStackTrace();
-            } 
-	}   
+            }           
+	}  
+        selenium.close();
     }
 }
 
