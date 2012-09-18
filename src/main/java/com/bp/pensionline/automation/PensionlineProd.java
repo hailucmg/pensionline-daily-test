@@ -140,7 +140,6 @@ public class PensionlineProd {
         Thread.sleep(10000);
         if (selenium.isTextPresent("welcome to PensionLine")) {
             bodyText += "   Loading of Deferred member (BGROUP/REFNO) "+element.getDeferred_member()+ "<br>";
-            bodyText += "     lock-outs functional(yes/no) : YES" + "<br>";
             FileLogger.logger.info(" ->Loading of Deferred member (BGROUP/REFNO) "+element.getDeferred_member()+"(PP): PASSED");
         } else {
             bodyText += "   Loading of Deferred member (BGROUP/REFNO) "+element.getDeferred_member()+": FAILED" + "<br>";
@@ -178,7 +177,6 @@ public class PensionlineProd {
         Thread.sleep(10000);
         if (selenium.isTextPresent("welcome to PensionLine")) {
             bodyText += "   Loading of Pensioner member (BGROUP/REFNO) "+element.getPensioner_member1()+"<br>";
-            bodyText += "     lock-outs functional(yes/no) : YES" + "<br>";
             FileLogger.logger.info(" ->Loading of Pensioner member (BGROUP/REFNO) "+element.getPensioner_member1()+": PASSED");
         } else {
             bodyText += "   Loading of Pensioner member (BGROUP/REFNO) "+element.getPensioner_member1()+": FAILED" + "<br>";
@@ -224,7 +222,6 @@ public class PensionlineProd {
         Thread.sleep(10000);
         if (selenium.isTextPresent("welcome to PensionLine")) {
               bodyText += "   Loading of Pensioner member (BGROUP/REFNO) "+element.getPensioner_member2()+"<br>";
-              bodyText += "     lock-outs functional(yes/no) : YES" + "<br>";
               FileLogger.logger.info(" ->Loading of Pensioner member (BGROUP/REFNO) "+element.getPensioner_member2()+": PASSED");
         } else {
               bodyText += "   Loading of Pensioner member (BGROUP/REFNO) "+element.getPensioner_member2()+": FAILED" + "<br>";
@@ -271,7 +268,6 @@ public class PensionlineProd {
          Thread.sleep(10000);
          if (selenium.isTextPresent("welcome to PensionLine")) {
                bodyText += "   Loading of Pensioner member (BGROUP/REFNO) "+element.getPensioner_member3()+"<br>";
-               bodyText += "     lock-outs functional(yes/no) : YES" + "<br>";
                FileLogger.logger.info(" ->Loading of Pensioner member (BGROUP/REFNO) "+element.getPensioner_member3()+": PASSED");
          } else {
                bodyText += "   Loading of Pensioner member (BGROUP/REFNO) "+element.getPensioner_member3()+": FAILED" + "<br>";
@@ -318,7 +314,6 @@ public class PensionlineProd {
          Thread.sleep(10000);
          if (selenium.isTextPresent("welcome to PensionLine")) {
                bodyText += "   Loading of Security lock-out in place (BGROUP/REFNO) "+element.getSecurity_member1()+"<br>";
-               bodyText += "     lock-outs functional(yes/no) : YES" + "<br>";
                FileLogger.logger.info(" ->Security lock-out in place (BGROUP/REFNO) "+element.getSecurity_member1()+": PASSED");
          } else {
                bodyText += "   Loading of Security lock-out in place (BGROUP/REFNO) "+element.getSecurity_member1()+": FAILED" + "<br>";
@@ -375,7 +370,6 @@ public class PensionlineProd {
         Thread.sleep(10000);
         if (selenium.isTextPresent("welcome to PensionLine")) {
               bodyText += "   Loading of Security lock-out in place (BGROUP/REFNO) "+element.getSecurity_member2()+"<br>";
-              bodyText += "     lock-outs functional(yes/no) : YES" + "<br>";
               FileLogger.logger.info(" ->Security lock-out in place (BGROUP/REFNO) "+element.getSecurity_member2()+": PASSED");
         } else {
               bodyText += "   Loading of Security lock-out in place (BGROUP/REFNO) "+element.getSecurity_member2()+": FAILED" + "<br>";
