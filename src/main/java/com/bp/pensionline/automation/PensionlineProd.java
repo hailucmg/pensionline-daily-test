@@ -203,7 +203,7 @@ public class PensionlineProd {
         	/**************Loading My benefits*********************/
         	selenium.open("https://pensionline.bp.com/content/pl/mydetails/benefit_statement_pn.html");
         	Thread.sleep(100000);
-        	if(selenium.isTextPresent("£7,136.15")){
+        	if(selenium.isTextPresent("\u00A37,136.15")){
         	    bodyText += "       Payslips fuctional (yes/no) : YES" + "<br>";
         	    FileLogger.logger.info(" ->Payslips fuctional (yes/no) : YES");
         	}else{
@@ -248,7 +248,7 @@ public class PensionlineProd {
                /**************Loading My benefits*********************/
                selenium.open("https://pensionline.bp.com/content/pl/mydetails/benefit_statement_pn.html");
                Thread.sleep(100000);
-               if(selenium.isTextPresent("£2,746.96")){
+               if(selenium.isTextPresent("\u00A32,746.96")){
         	   bodyText += "       Payslips fuctional (yes/no) : YES" + "<br>";
         	   FileLogger.logger.info(" ->Payslips fuctional (yes/no) : YES");
                }else{
@@ -294,7 +294,7 @@ public class PensionlineProd {
                 /**************Loading My benefits*********************/
                 selenium.open("https://pensionline.bp.com/content/pl/mydetails/benefit_statement_pn.html");
                 Thread.sleep(100000);
-                if(selenium.isTextPresent("£2,000.88")){
+                if(selenium.isTextPresent("\u00A32,000.88")){
          	   bodyText += "       Payslips fuctional (yes/no) : YES" + "<br><br>";
          	   FileLogger.logger.info(" ->Payslips fuctional (yes/no) : YES");
                 }else{
@@ -340,7 +340,7 @@ public class PensionlineProd {
              /************Loading Scheme Benefits Statement*********************/
              selenium.open("https://pensionline.bp.com/content/pl/mydetails/benefit_statement_ac/scheme_pension/");
              Thread.sleep(30000);
-             if(selenium.isTextPresent("£10,500")){
+             if(selenium.isTextPresent("\u00A310,500")){
         	 bodyText += "     Scheme benefit statement functional (yes/no): YES " + "<br>";
         	 FileLogger.logger.info(" ->Scheme benefit statement functional (yes/no): YES ");
     	     }else{
@@ -350,7 +350,7 @@ public class PensionlineProd {
              /***********Loading My Annual Allowance***************************/
              selenium.open("https://pensionline.bp.com/content/pl/mydetails/annual_allowance/statement.html");
              Thread.sleep(30000);
-             if(selenium.isTextPresent("£11,736")){
+             if(selenium.isTextPresent("\u00A311,736")){
         	 bodyText += "     My Annual Allowance (yes/no): YES " + "<br><br>";
         	 FileLogger.logger.info(" ->My Annual Allowance (yes/no): YES ");
              }else{
@@ -396,7 +396,7 @@ public class PensionlineProd {
             /************Loading Scheme Benefits Statement*********************/
             selenium.open("https://pensionline.bp.com/content/pl/mydetails/benefit_statement_ac/scheme_pension/");
             Thread.sleep(40000);
-            if(selenium.isTextPresent("£38,936")){
+            if(selenium.isTextPresent("\u00A338,936")){
        	 	bodyText += "     Scheme benefit statement functional (yes/no): YES " + "<br>";
        	 	FileLogger.logger.info(" ->Scheme benefit statement functional (yes/no): YES ");
    	     }else{
@@ -406,7 +406,7 @@ public class PensionlineProd {
             /***********Loading My Annual Allowance***************************/
             selenium.open("https://pensionline.bp.com/content/pl/mydetails/annual_allowance/statement.html");
             Thread.sleep(24000);
-            if(selenium.isTextPresent("£35,253")){
+            if(selenium.isTextPresent("\u00A335,253")){
        	 	bodyText += "     My Annual Allowance (yes/no): YES " + "<br><br>";
        	 	FileLogger.logger.info(" ->My Annual Allowance (yes/no): YES ");
             }else{
@@ -452,7 +452,7 @@ public class PensionlineProd {
             /*************Loading Scheme Benefits Statement********************/
             selenium.open("https://pensionline.bp.com/content/pl/mydetails/benefit_statement_ac/scheme_pension/");
             Thread.sleep(30000);
-            if(selenium.isTextPresent("£42,233")){
+            if(selenium.isTextPresent("\u00A342,233")){
        	 	bodyText += "     Scheme benefit statement functional (yes/no): YES " + "<br>";
        	 	FileLogger.logger.info(" ->Scheme benefit statement functional (yes/no): YES ");
    	    }else{
@@ -462,7 +462,7 @@ public class PensionlineProd {
             /************Loading State Benefits********************************/
             selenium.open("https://pensionline.bp.com/content/pl/mydetails/benefit_statement_ac/state_pension.html");
             Thread.sleep(30000);
-            if(selenium.isTextPresent("£5,950 a year")){
+            if(selenium.isTextPresent("\u00A35,950 a year")){
        	 	bodyText += "     State Benefits functional (yes/no): YES " + "<br>";
        	 	FileLogger.logger.info(" ->State Benefits functional (yes/no): YES ");
    	    }else{
@@ -472,7 +472,7 @@ public class PensionlineProd {
             /************Loading My Retirement Planner********************************/
             selenium.open("https://pensionline.bp.com/content/pl/mydetails/retirement_planner_ac/");
             Thread.sleep(30000);
-            if(selenium.isTextPresent("£63,350")){
+            if(selenium.isTextPresent("\u00A363,350")){
        	 	bodyText += "     Retirement planner functional (yes/no): YES " + "<br>";
        	 	FileLogger.logger.info(" ->Retirement planner functional (yes/no): YES ");
    	    }else{
@@ -508,7 +508,7 @@ public class PensionlineProd {
        	 	
        	 	selenium.click("coins");
        	 	Thread.sleep(5000);
-       	 	if(!selenium.isTextPresent("Estimated BP cash lump sum: £0")){
+       	 	if(!selenium.isTextPresent("Estimated BP cash lump sum: \u00A30")){
        	 	    bodyText += "      Change cash lump sum to 50%(yes/no): YES  " + "<br>";
        	 	    FileLogger.logger.info(" -> Change cash lump sum to 50%(yes/no): YES ");
        	 	}else{
@@ -521,7 +521,7 @@ public class PensionlineProd {
        	 	selenium.select("accrual_select","40th");
        	 	//selenium.click("//button[contains(text(),'Model')]");
        	 	
-       	 	if(!selenium.isTextPresent("Retiring on your 65th birthday, estimated BP Pension: £0 a year")){
+       	 	if(!selenium.isTextPresent("Retiring on your 65th birthday, estimated BP Pension: \u00A30 a year")){
 	 	    bodyText += "      Amounts in the pension & cash lump sum flags change accordingly after each modeling(yes/no): YES   " + "<br>";
 	 	    FileLogger.logger.info(" -> Amounts in the pension & cash lump sum flags change accordingly after each modeling(yes/no): YES  ");
 	 	}else{
