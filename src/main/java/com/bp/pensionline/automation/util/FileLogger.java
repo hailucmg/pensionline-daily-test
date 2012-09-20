@@ -11,6 +11,7 @@
  */
  package com.bp.pensionline.automation.util; 
 
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.FileHandler;
 import java.util.logging.Formatter;
@@ -25,11 +26,16 @@ import java.util.logging.Logger;
  */
 public class FileLogger {
     public static Logger logger;
-    
+    public static final String LOG_NAME = "PLAutomation.log";
     static {
 	    try {
+	     File logFolder = new File(Element.BASE_PATH + "\\log");
+	     if (!logFolder.exists() || !logFolder.isDirectory()) {
+	    	 logFolder.mkdirs();
+	     }
+	     
 	      boolean append = true;
-	      FileHandler fh = new FileHandler("C:\\PLAutomation.log",append);
+	      FileHandler fh = new FileHandler(Element.BASE_PATH + "\\log\\" + LOG_NAME,append);
 	      fh.setFormatter(new Formatter() {
 	         public String format(LogRecord rec) {
 	            StringBuffer buf = new StringBuffer(1000);

@@ -11,8 +11,13 @@
  */
  package com.bp.pensionline.automation.util; 
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
+
 
 /** 
  * DOCME * 
@@ -21,6 +26,9 @@ import java.util.Properties;
  * @version .Revision: # .Date:Sep 5, 2012*
  */
 public class Element {
+	public static final String BASE_PATH = "C:\\AutomationTest\\PensionLine";
+	public static final String PROPERTIES_FILE = "element.properties";
+	
     private String url_prod;
     private String username;
     private String password;
@@ -190,7 +198,24 @@ public class Element {
     
     public void loadProperties(){
 	try {
-		props.load(this.getClass().getResourceAsStream("/com/bp/pensionline/automation/util/element.properties"));
+		File cfgFolder = new File(BASE_PATH + "\\cfg");
+		if (!cfgFolder.exists() || !cfgFolder.isDirectory()) {
+			cfgFolder.mkdirs();
+		}
+		File cfgFile = new File(BASE_PATH + "\\cfg\\" + PROPERTIES_FILE);
+		if (!cfgFile.exists() || !cfgFile.isFile()) {
+			InputStream is  = Element.class.getResourceAsStream("/com/bp/pensionline/automation/util/" + PROPERTIES_FILE);
+			FileOutputStream fos = new FileOutputStream(cfgFile);
+			int n = 0;
+			byte[] b = new byte[1024];
+			while ((n=is.read(b)) != -1) {
+				fos.write(b, 0, n);
+			}
+			fos.flush();
+			fos.close();
+		} 
+		cfgFile = new File(BASE_PATH + "\\cfg\\" + PROPERTIES_FILE);
+		props.load(new FileInputStream(cfgFile));
 		this.setUrl_prod(props.getProperty("url_prod"));
 		this.setUsername(props.getProperty("username"));
 		this.setPassword(props.getProperty("password"));
