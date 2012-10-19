@@ -93,10 +93,12 @@ public class PensionlineProd {
 		Thread.sleep(21000);
 		if (selenium.isTextPresent("this is me")) {
 		    bodyText += "   Loading of WALL'ed member (BGROUP/REFNO) " + element.getWall_member1() + ": FAILED" + "<br>";
+		    bodyText += "   Lock-out all functions : NO" + "<br>";
 		    FileLogger.logger.info(" ->This is me functional(yes/no) : YES");
 		    FileLogger.logger.info(" ->Loading of WALL'ed member (BGROUP/REFNO) " + element.getWall_member1() + ": FAILED");
 		} else {
 		    bodyText += "   Loading of WALL'ed member (BGROUP/REFNO) " + element.getWall_member1() + ": PASSED" + "<br>";
+		    bodyText += "   Lock-out all functions : YES" + "<br>";
 		    FileLogger.logger.info(" ->This is me functional(yes/no) : NO");
 		    FileLogger.logger.info(" ->Loading of WALL'ed member (BGROUP/REFNO) " + element.getWall_member1() + ": PASSED");
 		}
@@ -128,10 +130,12 @@ public class PensionlineProd {
 		Thread.sleep(21000);
 		if (selenium.isTextPresent("this is me")) {
 		    bodyText += "   Loading of WALL'ed member (BGROUP/REFNO) " + element.getWall_member2() + ": FAILED" + "<br>";
+		    bodyText += "   Lock-out all functions : NO" + "<br>";
 		    FileLogger.logger.info(" ->This is me functional(yes/no) : YES");
 		    FileLogger.logger.info(" ->Loading of WALL'ed member (BGROUP/REFNO) " + element.getWall_member2() + ": FAILED");
 		} else {
 		    bodyText += "   Loading of WALL'ed member (BGROUP/REFNO) " + element.getWall_member2() + ": PASSED" + "<br>";
+		    bodyText += "   Lock-out all functions : YES" + "<br>";
 		    FileLogger.logger.info(" ->This is me functional(yes/no) : NO");
 		    FileLogger.logger.info(" ->Loading of WALL'ed member (BGROUP/REFNO) " + element.getWall_member2() + ": PASSED");
 		}
@@ -162,10 +166,12 @@ public class PensionlineProd {
 		Thread.sleep(21000);
 		if (selenium.isTextPresent("this is me")) {
 		    bodyText += "   Loading of WALL'ed member (BGROUP/REFNO) " + element.getWall_member3() + ": FAILED" + "<br>";
+		    bodyText += "   Lock-out all functions : NO" + "<br>";
 		    FileLogger.logger.info(" ->This is me functional(yes/no) : YES");
 		    FileLogger.logger.info(" ->Loading of WALL'ed member (BGROUP/REFNO) " + element.getWall_member3() + ": FAILED");
 		} else {
 		    bodyText += "   Loading of WALL'ed member (BGROUP/REFNO) " + element.getWall_member3() + ": PASSED" + "<br>";
+		    bodyText += "   Lock-out all functions : YES" + "<br>";
 		    FileLogger.logger.info(" ->This is me functional(yes/no) : NO");
 		    FileLogger.logger.info(" ->Loading of WALL'ed member (BGROUP/REFNO) " + element.getWall_member3() + ": PASSED");
 		}
