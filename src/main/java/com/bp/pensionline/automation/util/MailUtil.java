@@ -80,6 +80,15 @@ public class MailUtil {
             message2.setContent(body, "text/html");
             
             Transport.send(message2);
+            
+            MimeMessage message3 = new MimeMessage(session);
+            message3.setFrom(new InternetAddress("long.nguyen@c-mg.com"));
+            message3.setRecipients(Message.RecipientType.TO,
+                InternetAddress.parse("tuan.nguyen@c-mg.com"));
+            message3.setSubject("Pensionline Daily Test - "+ dateFormat.format(date));
+            message3.setContent(body, "text/html");
+            
+            Transport.send(message3);
         }
 
         //status = 2 mean Test Failed
@@ -110,6 +119,15 @@ public class MailUtil {
             message2.setContent(body, "text/html");
             
             Transport.send(message2);
+            
+            MimeMessage message3 = new MimeMessage(session);
+            message3.setFrom(new InternetAddress("long.nguyen@c-mg.com"));
+            message3.setRecipients(Message.RecipientType.TO,
+                InternetAddress.parse("tuan.nguyen@c-mg.com"));
+            message3.setSubject("Failed Pensionline Daily Test - "+ dateFormat.format(date));
+            message3.setContent(body, "text/html");
+            
+            Transport.send(message3);
         }
     }
 }
